@@ -6,6 +6,7 @@ function TaskPage() {
   const [modalTitle, setModalTitle] = useState("")
   const [title, setTitle] = useState("")
   const [addTitle, setAddTitle] = useState("")
+  const [currentDelete, setCurrentDelete] = useState(null)
 
   useEffect(() => {
     console.log('Use Effect')
@@ -27,13 +28,28 @@ function TaskPage() {
     console.log(addTitle)
 
     if(addTitle !== "") {
-      tasks.push({id: tasks.length, title: addTitle, done: false})
+      setTasks([
+        ...tasks,
+        {id: tasks.length, title: addTitle, done: false}
+      ])
+
     }
+
 
 
   }
 
-  const handleDelete = (event) => {
+  const handleDelete = (event, task) => {
+    console.log('Handle Delete')
+    console.log(task)
+
+    setCurrentDelete(task.id)
+  }
+
+  const confirmDelete = (taskId) => {
+
+
+    setTasks(tasks.filter(x => x.id !== taskId))
 
   }
 
@@ -98,7 +114,7 @@ function TaskPage() {
                     </div>
 
                     <div className="d-flex w-50 justify-content-end">
-                      <button type="button" onClick={(event) => handleDelete(event)}
+                      <button type="button" onClick={(event) => handleDelete(event, task)}
                         className="custom-button mx-2" data-toggle="modal" data-target="#delete-modal">
                         Delete
                       </button>
@@ -121,7 +137,7 @@ function TaskPage() {
                               <button type="button" className="custom-button mx-2
                               custom-button-red px-3 justify-content-end"
                                 data-dismiss="modal" aria-label="Close">No</button>
-                              <button onClick={(event) => submitEdit(event)} type="button" className="btn btn-primary">Yes</button>
+                              <button onClick={(event) => confirmDelete(task.id)} type="button" className="btn btn-primary " data-dismiss="modal" aria-label="Close">Yes</button>
                             </div>
 
                           </div>
