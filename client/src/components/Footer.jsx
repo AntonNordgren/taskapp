@@ -1,11 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <div className="footer">
-
+    <div className="footer mt-auto">
+      {/* <Link className="navigation-list" to="https://github.com/AntonNordgren">Github</Link> */}
     </div>
   )
 }
 
-export default Footer
+export default Footer 

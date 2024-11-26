@@ -16,12 +16,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
 
   return (
-    <div className="container-fluid d-flex flex-column m-0 p-0 vh-100">
+    <div className="main-container container-fluid d-flex flex-column m-0 p-0 min-vh-100">
+
 
       <BrowserRouter>
         <Navigation />
 
-        <div className="content-container vh-100">
+        <div className="content-container mb-5">
 
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -32,11 +33,12 @@ function App() {
           </Routes>
 
         </div>
+        
+        <Footer className="" />
 
-        <Footer />
       </BrowserRouter>
-
-
+      
+      
     </div>
   )
 }

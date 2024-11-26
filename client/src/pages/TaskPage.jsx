@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react'
 
 function TaskPage() {
 
-  const [tasks, setTasks] = useState([{ id: 0, title: "Study", done: false }, { id: 1, title: "Cleaning", done: false }])
+  const [tasks, setTasks] = useState([
+    { id: 0, title: "Study", done: false },
+    { id: 1, title: "Cleaning", done: false },
+  ])
   const [modalTitle, setModalTitle] = useState("")
   const [title, setTitle] = useState("")
   const [addTitle, setAddTitle] = useState("")
@@ -212,9 +215,8 @@ function TaskPage() {
 
               )) :
               <>
-                <h3 className="text-center">No Tasks</h3>
-                <div>
-                  <button className="custom-button custom-button-green shadow" data-toggle="modal" data-target="#add-modal">Add</button>
+                <div className="d-flex justify-content-center">
+                  <button className="custom-button custom-button-green" data-toggle="modal" data-target="#add-modal">Add</button>
                 </div>
               </>
               }
